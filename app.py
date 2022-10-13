@@ -90,7 +90,7 @@ def choose_hero():
             'weapons': weapons,
             'armors': armors
         }
-        return render_template('hero_choosing.html', result=result)
+        return render_template('hero_choosing.html', result=result, encoding='utf-8')
     elif request.method == 'POST':
         name = request.form['name']
         armor_name = request.form['armor']

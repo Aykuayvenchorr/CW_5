@@ -28,7 +28,10 @@ class BaseUnit(ABC):
 
     @property
     def stamina_points(self):
-        return round(self.stamina, 1)  # TODO возвращаем аттрибут hp в красивом виде
+        if self.stamina >= 0:
+            return round(self.stamina, 1)  # TODO возвращаем аттрибут hp в красивом виде
+        else:
+            return 0
 
     def equip_weapon(self, weapon: Weapon):
         # TODO присваиваем нашему герою новое оружие
@@ -105,7 +108,7 @@ class PlayerUnit(BaseUnit):
 
         damage = self._count_damage(target)
         if damage > 0:
-            f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} соперника и наносит {damage} урона."
+            return f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} соперника и наносит {damage} урона."
 
         # TODO результат функции должен возвращать следующие строки:
         return f"{self.name} используя {self.weapon.name} наносит удар, но {target.armor.name} cоперника его останавливает."
@@ -127,12 +130,12 @@ class EnemyUnit(BaseUnit):
             return self.use_skill(target)
 
         if self.stamina < self.weapon.stamina_per_hit:
-            f"{self.name} попытался использовать {self.weapon.name}, но у него не хватило выносливости."
+            return f"{self.name} попытался использовать {self.weapon.name}, но у него не хватило выносливости."
 
         damage = self._count_damage(target)
         if damage > 0:
             return f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} и наносит Вам {damage} урона."
         # TODO результат функции должен возвращать результат функции skill.use или же следующие строки:
-        f"{self.name} используя {self.weapon.name} наносит удар, но Ваш(а) {target.armor.name} его останавливает."
+        return f"{self.name} используя {self.weapon.name} наносит удар, но Ваш(а) {target.armor.name} его останавливает."
 
 

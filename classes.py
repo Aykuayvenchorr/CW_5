@@ -13,7 +13,7 @@ class UnitClass:
     skill: Skill
 
 
-WarriorClass =  UnitClass(
+WarriorClass = UnitClass(
     name='Воин',
     max_health=60.0,
     max_stamina=30.0,
@@ -23,7 +23,7 @@ WarriorClass =  UnitClass(
     skill=FuryPunch(),
 ) # TODO Инициализируем экземпляр класса UnitClass и присваиваем ему необходимые значения аттрибуотов
 
-ThiefClass =   UnitClass(
+ThiefClass = UnitClass(
     name='Вор',
     max_health=50.0,
     max_stamina=25.0,
